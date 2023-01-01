@@ -16,7 +16,6 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -33,15 +32,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot/Web%20capture_screenshot2.jpeg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
 ### Links
 
@@ -56,60 +48,79 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+# Search bar 
+**JavaScript code Demonstration**
+To understand how this code works, let's break it down into smaller pieces:
 
-To see how you can add code snippets, see below:
+The `searchInput` variable refers to the search input element in your HTML.
+
+The `handleSearch()` function is defined as the event handler for the input event of the search `input` element. This means that the function will be called every time the user types something in the search input.
+
+Inside the `handleSearch()` function, the search term entered by the user is retrieved from the `event.target.value` property and converted to lower case using the `toLowerCase()` method. This is done to make the search case-insensitive, so that it will match regardless of the case of the search term.
+
+The `filteredCountries` array is created by using the `filter()` method on the `countries` array. The `filter()` method takes a callback function as an argument, which is called for each element in the array. The callback function returns `true` if the element should be included in the filtered array, and `false` if it should be excluded. In this case, the callback function checks if the search term is contained in either the `name` or `region` property of the country object, using the `includes()` method. The `name` and `region` values are also converted to lower case to make the search case-insensitive.
+
+The `innerHTML` property of the `countriesCardCountainer` element is set to an empty string, which removes all existing cards from the container.
+
+The filtered countries are displayed by using the `forEach()` method to iterate over the `filteredCountries` array, and the `append()` method to append the `element` property of each country object to the `countriesCardCountainer`.
+
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+
 ```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+let countries = [] // it return from map that was applied on the API load response after it parse the value.
+
+searchInput.addEventListener("input", handleSearch);
+
+function handleSearch(event) {
+  // Get the search term entered by the user
+  const searchTerm = event.target.value.toLowerCase();
+
+  // Filter the countries based on the search term
+  const filteredCountries = countries.filter((country) => {
+    return country.name.toLowerCase().includes(searchTerm) ||
+           country.region.toLowerCase().includes(searchTerm);
+  });
+
+  // Clear the existing cards from the container
+  countriesCardCountainer.innerHTML = "";
+
+  // Display the filtered countries
+  filteredCountries.forEach((country) => {
+    countriesCardCountainer.append(country.element);
+  });
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+-I still want to build the second page which will represent the information for an individual country by click on its card from the homepage.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+-as well I must finish the part of filter by region task.
+
 
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@Ismail-sync](hhttps://www.frontendmentor.io/profile/Ismail-sync)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I'd like to thank my instructor, Mr. Joseph Boutros, for his guidance and patience with us, as well as all of his effort in teaching us coding from the ground up; and I'd also like to thank AL Hussein Technical University for establishing an upskilling program that developed our soft skills and English language skills while also teaching us new technical skills. 
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
