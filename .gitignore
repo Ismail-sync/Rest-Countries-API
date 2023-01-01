@@ -16,7 +16,8 @@
 
 *.jpg
 index.html
-*.md
+README-template.md
+style-guide.md
 script.js
 style.css
 Project API Rest Countries
