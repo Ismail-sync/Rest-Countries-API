@@ -31,7 +31,7 @@ function handleSearch(event) {
 
 
 // ***********************
-//  theme toggle
+//  *theme toggle*
 // ***********************
 
 
@@ -59,10 +59,11 @@ function creatCards() {
     let countriesJSON = countriesXhr.responseText;
     let allCountries = JSON.parse(countriesJSON);
 
+        
+
     countries = allCountries.map((originalCountry) => {
       const card =
         countriesCardTempleat.content.cloneNode(true).firstElementChild;
-
       let flag = card.querySelector("[data-country-flag]");
       flag.src = originalCountry.flags.png;
       let countryName = card.querySelector("[data-country-name]");
@@ -70,7 +71,8 @@ function creatCards() {
       let region = card.querySelector("[data-country-region]");
       let capital = card.querySelector("[data-country-capital]");
 
-      countryName.textContent += originalCountry.name.official;
+      countryName.textContent += originalCountry.name.common
+      ;
       population.textContent += originalCountry.population;
       region.textContent += originalCountry.region;
       capital.textContent += originalCountry.capital;
@@ -80,7 +82,7 @@ function creatCards() {
       countriesCardCountainer.append(card);
 
       return {
-        name: originalCountry.name.official,
+        name: originalCountry.name.common,
         // capital: originalCountry.capital,
         region: originalCountry.region,
         // flag: country.flag,
